@@ -12,14 +12,12 @@ var table = new Table({
    , 'right': '║' , 'right-mid': '╢' , 'middle': '│' }
 });
 
-// table is an Array, so you can `push`, `unshift`, `splice` and friends
 table.push(
-    ['-', '-', '-']
-  , ['-', '-', '-'],
+  ['-', '-', '-'],
+  ['-', '-', '-'],
   ['-', '-', '-']
 );
 
-// console.log(table.toString());
 var insertTic = function(xy) {
   xy = xy.split('');
   table[xy[0]][xy[1]] = 'x';
@@ -38,49 +36,76 @@ program
     if (program.username === 'tic') {
       insertTic(coords);
     } else if (program.username === 'tac') {
-      insertTac(coords)
+      insertTac(coords);
     }
     console.log(table.toString());
 
   })
   .parse(process.argv);
 
-  // console.log(table.toString());
-
+// create function to clear table and start over
 // program
-//   .arguments('<coords>')
-//   .option('-x, --tic <tic>, Player Tic to enter val')
-//   .option('-o, --tac <tac>, Player Tac to enter val')
+//   .option('-n, --new <username>, New Game')
 //   .action(function(coords) {
-//     co(function *() {
-//       var ticCoords = yield prompt('ticCoords: ');
-//       var tacCoords = yield prompt('tacCoords: ');
-//       insertTac(ticCoords);
-//       console.log('user: %s pass: %s file: %s', ticCoords, tacCoords, table.toString());
+//     // var ticCoords = yield prompt('ticCoords: ')
+
+
+//   })
+//   .parse(process.argv);
+
+// var TicTacToe = function() {
+//   this.board = [
+//     ['-', '-', '-'],
+//     ['-', '-', '-'],
+//     ['-', '-', '-']
+//   ];
+
+// };
+
+// TicTacToe.prototype.insertTic = function(xy) {
+//   xy = xy.toString();
+//   xy = xy.split('').map(el => JSON.parse(el));
+//   this.board[xy[0]][xy[1]] = 'x';
+//   return this.board;
+// };
+
+// TicTacToe.prototype.insertTac = function(xy) {
+//   xy = xy.toString();
+//   xy = xy.split('').map(el => JSON.parse(el));
+//   this.board[xy[0]][xy[1]] = 'o';
+//   return this.board;
+// };
+
+// TicTacToe.prototype.checkRowsForWinner = function() {
+//   var winner = null;
+//   this.board.forEach(row => {
+//     var tics = 0;
+//     var tac = 0;
+//     row.forEach(val => {
+//       if (val === 'x') {
+//         tics++;
+//       } else if (val === 'o') {
+//         tacs++;
+//       }
+//       if (tics === 3) {
+//         winner = 'tic';
+//       } else if (tacs === 3) {
+//         winner = 'tac';
+//       }
 //     });
-//   })
-//   .action(function(xy) {
-//     console.log(table.toString());
-//   })
-//   .parse(process.argv);
+//   });
+//   return winner;
+// };
 
-//   console.log(table.toString());
+// TicTacToe.prototype.checkColumnsForWinner = function() {
 
-
+// };
 
 
+// var game = new TicTacToe();
+// console.log(game.insertTic(11));
 
 
 
-// program
-//   .arguments('<file>')
-//   .option('-u, --username <username>', 'The user to authenticate as')
-//   .option('-p, --password <password>', 'The user\'s password')
-//   .action(function(file) {
-//     co(function *() {
-//       var username = yield prompt('username: ');
-//       var password = yield prompt.password('password: ');
-//       console.log('user: %s pass: %s file: %s', username, password, file);
-//     })
-//   })
-//   .parse(process.argv);
+
+
