@@ -20,32 +20,51 @@ table.push(
 );
 
 // console.log(table.toString());
-var insertTac = function(xy) {
-  table[x, y] = 'x';
-}
+var insertTic = function(xy) {
+  xy = xy.split('');
+  table[xy[0]][xy[1]] = 'x';
+};
 
 var insertTac = function(xy) {
-  table[x, y] = '0';
-}
+  xy = xy.split('');
+  table[xy[0]][xy[1]] = 'o';
+};
 
 program
   .arguments('<coords>')
-  .option('-x, --tic <tic>, Player Tic to enter val')
-  .option('-o, --tac <tac>, Player Tac to enter val')
+  .option('-u, --username <username>, Player to enter val')
   .action(function(coords) {
-    co(function *() {
-      var ticCoords = yield prompt('ticCoords: ');
-      var tacCoords = yield prompt('tacCoords: ');
-      insertTac(ticCoords);
-      console.log('user: %s pass: %s file: %s', ticCoords, tacCoords, table.toString());
-    });
-  })
-  .action(function(xy) {
+    // var ticCoords = yield prompt('ticCoords: ')
+    if (program.username === 'tic') {
+      insertTic(coords);
+    } else if (program.username === 'tac') {
+      insertTac(coords)
+    }
     console.log(table.toString());
+
   })
   .parse(process.argv);
 
-  console.log(table.toString());
+  // console.log(table.toString());
+
+// program
+//   .arguments('<coords>')
+//   .option('-x, --tic <tic>, Player Tic to enter val')
+//   .option('-o, --tac <tac>, Player Tac to enter val')
+//   .action(function(coords) {
+//     co(function *() {
+//       var ticCoords = yield prompt('ticCoords: ');
+//       var tacCoords = yield prompt('tacCoords: ');
+//       insertTac(ticCoords);
+//       console.log('user: %s pass: %s file: %s', ticCoords, tacCoords, table.toString());
+//     });
+//   })
+//   .action(function(xy) {
+//     console.log(table.toString());
+//   })
+//   .parse(process.argv);
+
+//   console.log(table.toString());
 
 
 
